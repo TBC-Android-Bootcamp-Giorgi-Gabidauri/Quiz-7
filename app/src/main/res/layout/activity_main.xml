@@ -42,7 +42,6 @@
             android:id="@+id/rvActiveCourses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"
             android:paddingStart="28dp"
             android:paddingEnd="28dp"
             app:layout_constraintEnd_toEndOf="parent"

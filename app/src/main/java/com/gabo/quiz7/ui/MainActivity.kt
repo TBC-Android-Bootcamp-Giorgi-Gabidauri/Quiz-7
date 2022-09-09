@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabo.quiz7.R
 import com.gabo.quiz7.adapter.ActiveCoursesAdapter
 import com.gabo.quiz7.adapter.NewCoursesAdapter
+import com.gabo.quiz7.data.models.ActiveCoursesModel
+import com.gabo.quiz7.data.models.NewCoursesModel
 import com.gabo.quiz7.databinding.ActivityMainBinding
 import com.gabo.quiz7.extensions.launchStarted
 import com.gabo.quiz7.other.ResponseHandler
@@ -20,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activeCoursesAdapter: ActiveCoursesAdapter
     private lateinit var newCoursesAdapter: NewCoursesAdapter
 
-    @Inject lateinit var viewModel: MainVM
+    @Inject
+    lateinit var viewModel: MainVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +36,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        with(viewModel){
+        with(viewModel) {
             launchStarted {
-                getActiveCourses().collect{
-                    when(it){
+                getActiveCourses().collect {
+                    when (it) {
                         is ResponseHandler.Success -> {
-                            activeCoursesAdapter.submitList(it.data!!)
+                            val list = it.data
+                            val largerList = mutableListOf<ActiveCoursesModel>()
+                            repeat(4) {
+                                list?.forEach { model -> largerList.add(model) }
+                            }
+                            activeCoursesAdapter.submitList(largerList)
                         }
                         else -> {
                         }
@@ -46,10 +54,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             launchStarted {
-                getNewCourses().collect{
-                    when(it){
+                getNewCourses().collect {
+                    when (it) {
                         is ResponseHandler.Success -> {
-                            newCoursesAdapter.submitList(it.data!!)
+                            val list = it.data
+                            val largerList = mutableListOf<NewCoursesModel>()
+                            repeat(4) {
+                                list?.forEach { largerList.add(it) }
+                            }
+                            newCoursesAdapter.submitList(largerList)
                         }
                         else -> {
                         }

@@ -12,19 +12,37 @@
         android:layout_height="match_parent"
         android:background="@color/bg_active_courses">
 
-        <ImageView
-            android:id="@+id/ivIcon"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvIcon"
             android:layout_width="57dp"
             android:layout_height="59dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:background="@color/new_courses_bg_green"
-            android:padding="13dp"
-            android:src="@drawable/ic_start_new_courses"
+            android:backgroundTint="@color/new_courses_bg_green"
+            app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clIcon"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_start_new_courses"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -35,7 +53,7 @@
             android:text="@string/booked_for_8_pm"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@id/ivIcon"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -43,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:alpha="0.5"
             android:text="@string/booked_for_8_pm"
             android:textColor="@color/white"
             android:textSize="14sp"

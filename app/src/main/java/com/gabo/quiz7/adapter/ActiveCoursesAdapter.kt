@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.graphics.alpha
 import androidx.recyclerview.widget.RecyclerView
 import com.gabo.quiz7.data.models.ActiveCoursesModel
 import com.gabo.quiz7.databinding.ActiveCoursesItemViewBinding
@@ -24,10 +25,17 @@ class ActiveCoursesAdapter() :
 
         fun bind(model: ActiveCoursesModel) {
             with(binding) {
+                val color = Color.parseColor("#${model.mainColor}")
                 tvTitle.text = model.title
-                tvSubText.text = model.bookingTime
+                tvTitle.setTextColor(color)
                 ivIcon.loadImage(model.image)
-                cl.setBackgroundColor(Color.parseColor("#${model.mainColor}"))
+                ivIcon.setBackgroundColor(color)
+                clIcon.setBackgroundColor(color)
+                tvSubText.text = model.bookingTime
+                tvSubText.setTextColor(color)
+                cl.setBackgroundColor(color)
+                cl.background.alpha = model.backgroundColorPercent
+                ivStart.setColorFilter(color)
             }
         }
     }
