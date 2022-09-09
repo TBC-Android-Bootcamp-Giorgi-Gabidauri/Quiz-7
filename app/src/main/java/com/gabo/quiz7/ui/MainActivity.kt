@@ -1,16 +1,14 @@
 package com.gabo.quiz7.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gabo.quiz7.R
 import com.gabo.quiz7.adapter.ActiveCoursesAdapter
 import com.gabo.quiz7.adapter.NewCoursesAdapter
-import com.gabo.quiz7.data.models.ActiveCoursesModel
-import com.gabo.quiz7.data.models.NewCoursesModel
 import com.gabo.quiz7.databinding.ActivityMainBinding
+import com.gabo.quiz7.domain.models.ActiveCoursesModel
+import com.gabo.quiz7.domain.models.NewCoursesModel
 import com.gabo.quiz7.extensions.launchStarted
 import com.gabo.quiz7.other.ResponseHandler
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,9 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var activeCoursesAdapter: ActiveCoursesAdapter
     private lateinit var newCoursesAdapter: NewCoursesAdapter
-
-    @Inject
-    lateinit var viewModel: MainVM
+    private val viewModel: MainVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

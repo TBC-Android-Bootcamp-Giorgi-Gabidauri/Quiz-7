@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gabo.quiz7.R
-import com.gabo.quiz7.data.models.NewCoursesModel
 import com.gabo.quiz7.databinding.NewCoursesItemViewBinding
+import com.gabo.quiz7.domain.models.NewCoursesModel
 
 class NewCoursesAdapter() : RecyclerView.Adapter<NewCoursesAdapter.NewCoursesVH>() {
     private var list: List<NewCoursesModel> = emptyList()
@@ -23,9 +23,9 @@ class NewCoursesAdapter() : RecyclerView.Adapter<NewCoursesAdapter.NewCoursesVH>
 
         fun bind(model: NewCoursesModel) {
             with(binding) {
-                if (model.iconType == "settings"){
+                if (model.iconType == "settings") {
                     icIntroduce.setImageResource(R.drawable.ic_settings)
-                } else{
+                } else {
                     icIntroduce.setImageResource(R.drawable.ic_wallet)
                 }
                 cl.setBackgroundColor(Color.parseColor("#${model.mainColor}"))

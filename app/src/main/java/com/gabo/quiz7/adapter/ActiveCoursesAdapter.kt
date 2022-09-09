@@ -4,10 +4,9 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.alpha
 import androidx.recyclerview.widget.RecyclerView
-import com.gabo.quiz7.data.models.ActiveCoursesModel
 import com.gabo.quiz7.databinding.ActiveCoursesItemViewBinding
+import com.gabo.quiz7.domain.models.ActiveCoursesModel
 import com.gabo.quiz7.extensions.loadImage
 
 class ActiveCoursesAdapter() :

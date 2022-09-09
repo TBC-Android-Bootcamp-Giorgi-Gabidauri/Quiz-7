@@ -2,7 +2,7 @@ package com.gabo.quiz7.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class ActiveCoursesModel(
+data class ActiveCoursesDto(
     val id: Int,
     @SerializedName("booking_time")
     val bookingTime: String,
@@ -15,5 +15,4 @@ data class ActiveCoursesModel(
     @SerializedName("play_button_color_percent")
     val playButtonColorPercent: Int,
     val image: String
-
 )

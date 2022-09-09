@@ -1,8 +1,9 @@
 package com.gabo.quiz7.domain.useCases
 
 import com.gabo.quiz7.base.BaseUseCase
-import com.gabo.quiz7.data.models.ActiveCoursesModel
+import com.gabo.quiz7.domain.models.ActiveCoursesModel
 import com.gabo.quiz7.domain.repository.Repository
+import com.gabo.quiz7.extensions.toModel
 import com.gabo.quiz7.other.ResponseHandler
 import javax.inject.Inject
 
@@ -13,7 +14,7 @@ class GetActiveCoursesUseCase @Inject constructor(private val repository: Reposi
         return when {
             result.isSuccessful -> {
                 val body = result.body()
-                ResponseHandler.Success(body?.activeCourses)
+                ResponseHandler.Success(body?.activeCourses?.map { it.toModel() })
             }
             else -> {
                 val errorMsg = result.errorBody()?.string()
