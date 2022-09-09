@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz 7</string>
+    <string name="introduce">Introduce</string>
+    <string name="courses">Courses</string>
+    <string name="what_is_it">what is it?</string>
+    <string name="booked_for_8_pm">Booked for 8 PM</string>
+</resources>
