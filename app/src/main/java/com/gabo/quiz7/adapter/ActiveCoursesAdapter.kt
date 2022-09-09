@@ -36,6 +36,8 @@ class ActiveCoursesAdapter() :
                 cl.setBackgroundColor(color)
                 cl.background.alpha = model.backgroundColorPercent
                 ivStart.setColorFilter(color)
+                progress.progress = model.progress
+                progress.setIndicatorColor(color)
             }
         }
     }

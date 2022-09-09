@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         setupAdapters()
         setupObservers()
-
     }
 
     private fun setupObservers() {

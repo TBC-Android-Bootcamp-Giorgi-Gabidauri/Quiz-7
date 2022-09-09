@@ -12,10 +12,4 @@
       android:pathData="M22.933,18.2C23.467,18.6 23.467,19.4 22.933,19.8L17.6,23.8C16.941,24.294 16,23.824 16,23L16,15C16,14.176 16.941,13.706 17.6,14.2L22.933,18.2Z"
       android:fillColor="#3DD598"
       android:fillType="evenOdd"/>
-  <path
-      android:pathData="M1,19C1,28.941 9.059,37 19,37C28.941,37 37,28.941 37,19C37,9.059 28.941,1 19,1"
-      android:strokeWidth="2"
-      android:fillColor="#00000000"
-      android:strokeColor="#3DD598"
-      android:strokeLineCap="round"/>
 </vector>
