@@ -30,7 +30,7 @@ class NewCoursesAdapter() : RecyclerView.Adapter<NewCoursesAdapter.NewCoursesVH>
                 }
                 cl.setBackgroundColor(Color.parseColor("#${model.mainColor}"))
                 tvIntroduce.text = model.title
-                tvTime.text = model.duration.toString()
+                tvTime.text = "${(model.duration / 3600)} min"
                 tvWhatIsIt.text = model.question
             }
         }

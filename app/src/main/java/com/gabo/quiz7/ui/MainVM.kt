@@ -3,9 +3,9 @@ package com.gabo.quiz7.ui
 import androidx.lifecycle.ViewModel
 import com.gabo.quiz7.domain.models.ActiveCoursesModel
 import com.gabo.quiz7.domain.models.NewCoursesModel
-import com.gabo.quiz7.domain.useCases.GetActiveCoursesUseCase
-import com.gabo.quiz7.domain.useCases.GetNewCoursesUseCase
 import com.gabo.quiz7.other.ResponseHandler
+import com.gabo.quiz7.ui.useCases.GetActiveCoursesUseCase
+import com.gabo.quiz7.ui.useCases.GetNewCoursesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

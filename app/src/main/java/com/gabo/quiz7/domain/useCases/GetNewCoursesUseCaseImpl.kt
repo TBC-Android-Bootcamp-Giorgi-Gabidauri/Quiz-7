@@ -1,14 +1,14 @@
 package com.gabo.quiz7.domain.useCases
 
-import com.gabo.quiz7.base.BaseUseCase
 import com.gabo.quiz7.domain.models.NewCoursesModel
 import com.gabo.quiz7.domain.repository.Repository
 import com.gabo.quiz7.extensions.toModel
 import com.gabo.quiz7.other.ResponseHandler
+import com.gabo.quiz7.ui.useCases.GetNewCoursesUseCase
 import javax.inject.Inject
 
-class GetNewCoursesUseCase @Inject constructor(private val repository: Repository) :
-    BaseUseCase<Unit, ResponseHandler<List<NewCoursesModel>>>() {
+class GetNewCoursesUseCaseImpl @Inject constructor(private val repository: Repository) :
+    GetNewCoursesUseCase {
     override suspend fun invoke(params: Unit): ResponseHandler<List<NewCoursesModel>> {
         val result = repository.getCourses()
         return when {
