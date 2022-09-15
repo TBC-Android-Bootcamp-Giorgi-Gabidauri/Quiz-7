@@ -1,9 +1,7 @@
 package com.gabo.quiz7.di
 
-import com.gabo.quiz7.domain.useCases.GetActiveCoursesUseCaseImpl
-import com.gabo.quiz7.domain.useCases.GetNewCoursesUseCaseImpl
-import com.gabo.quiz7.ui.useCases.GetActiveCoursesUseCase
-import com.gabo.quiz7.ui.useCases.GetNewCoursesUseCase
+import com.gabo.quiz7.domain.useCases.GetCoursesUseCaseImpl
+import com.gabo.quiz7.ui.useCases.GetCoursesUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,9 +14,5 @@ abstract class UseCaseModule {
 
     @Binds
     @Singleton
-    abstract fun bindGetActiveCoursesUseCase(getActiveCoursesUseCaseImpl: GetActiveCoursesUseCaseImpl): GetActiveCoursesUseCase
-
-    @Binds
-    @Singleton
-    abstract fun bindGetNewCoursesUseCase(getNewCoursesUseCaseImpl: GetNewCoursesUseCaseImpl): GetNewCoursesUseCase
+    abstract fun bindGetCoursesUseCase(getCoursesUseCaseImpl: GetCoursesUseCaseImpl): GetCoursesUseCase
 }

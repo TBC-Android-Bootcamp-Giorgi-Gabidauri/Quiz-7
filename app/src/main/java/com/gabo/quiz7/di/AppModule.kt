@@ -28,3 +28,8 @@ object AppModule {
         return retrofit.create(CoursesApi::class.java)
     }
 }
+
+//
+//buildTypes..
+//        buildConfig...
+//        develop and production ganvasxvavo base url shemilia gadavcvalo magalitad romelze romeli gaeshvaso

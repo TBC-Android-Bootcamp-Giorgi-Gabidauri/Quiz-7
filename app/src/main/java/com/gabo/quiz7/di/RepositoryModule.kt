@@ -1,7 +1,7 @@
 package com.gabo.quiz7.di
 
-import com.gabo.quiz7.data.repository.RepositoryImpl
-import com.gabo.quiz7.domain.repository.Repository
+import com.gabo.quiz7.data.repository.CoursesRepositoryImpl
+import com.gabo.quiz7.domain.repository.CoursesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindRepository(repositoryImpl: RepositoryImpl): Repository
+    abstract fun bindRepository(coursesRepositoryImpl: CoursesRepositoryImpl): CoursesRepository
 }

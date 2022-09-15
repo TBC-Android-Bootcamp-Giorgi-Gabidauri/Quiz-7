@@ -1,8 +1,10 @@
 package com.gabo.quiz7.extensions
 
 import com.gabo.quiz7.data.models.ActiveCoursesDto
+import com.gabo.quiz7.data.models.CoursesDto
 import com.gabo.quiz7.data.models.NewCoursesDto
 import com.gabo.quiz7.domain.models.ActiveCoursesModel
+import com.gabo.quiz7.domain.models.CoursesModel
 import com.gabo.quiz7.domain.models.NewCoursesModel
 
 
@@ -20,3 +22,5 @@ fun ActiveCoursesDto.toModel(): ActiveCoursesModel = ActiveCoursesModel(
 fun NewCoursesDto.toModel(): NewCoursesModel = NewCoursesModel(
     id, iconType, duration, title, question, mainColor
 )
+
+fun CoursesDto.toModel(): CoursesModel = CoursesModel(newCourses, activeCourses)

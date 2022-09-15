@@ -1,18 +1,16 @@
 package com.gabo.quiz7.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabo.quiz7.adapter.ActiveCoursesAdapter
 import com.gabo.quiz7.adapter.NewCoursesAdapter
 import com.gabo.quiz7.databinding.ActivityMainBinding
-import com.gabo.quiz7.domain.models.ActiveCoursesModel
-import com.gabo.quiz7.domain.models.NewCoursesModel
 import com.gabo.quiz7.extensions.launchStarted
-import com.gabo.quiz7.other.ResponseHandler
+import com.gabo.quiz7.extensions.toModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -31,38 +29,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        with(viewModel) {
-            launchStarted {
-                getActiveCourses().collect {
-                    when (it) {
-                        is ResponseHandler.Success -> {
-                            val list = it.data
-                            val largerList = mutableListOf<ActiveCoursesModel>()
-                            repeat(4) {
-                                list?.forEach { model -> largerList.add(model) }
-                            }
-                            activeCoursesAdapter.submitList(largerList)
-                        }
-                        else -> {
-                        }
-                    }
+        launchStarted {
+            viewModel.defaultState.collect {
+                if (it.errorMsg.isNotEmpty()) {
+                    Toast.makeText(this, it.errorMsg, Toast.LENGTH_SHORT).show()
                 }
+//                activeCoursesAdapter.submitList(it.data?.activeCourses?.map { it.toModel() }
+//                    ?: emptyList())
+//                newCoursesAdapter.submitList(it.data?.newCourses?.map { it.toModel() }
+//                    ?: emptyList())
             }
-            launchStarted {
-                getNewCourses().collect {
-                    when (it) {
-                        is ResponseHandler.Success -> {
-                            val list = it.data
-                            val largerList = mutableListOf<NewCoursesModel>()
-                            repeat(4) {
-                                list?.forEach { largerList.add(it) }
-                            }
-                            newCoursesAdapter.submitList(largerList)
-                        }
-                        else -> {
-                        }
-                    }
-                }
+        }
+        launchStarted {
+            viewModel.state.collect{
+                activeCoursesAdapter.submitList(it.activeCourses)
+                newCoursesAdapter.submitList(it.newCourses)
             }
         }
     }
