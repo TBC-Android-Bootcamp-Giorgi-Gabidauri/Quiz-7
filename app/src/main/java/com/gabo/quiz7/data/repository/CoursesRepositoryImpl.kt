@@ -5,6 +5,7 @@ import com.gabo.quiz7.domain.models.CoursesModel
 import com.gabo.quiz7.domain.repository.CoursesRepository
 import com.gabo.quiz7.extensions.toModel
 import com.gabo.quiz7.other.ResponseHandler
+import retrofit2.Response
 import javax.inject.Inject
 
 class CoursesRepositoryImpl @Inject constructor(private val coursesApi: CoursesApi) :

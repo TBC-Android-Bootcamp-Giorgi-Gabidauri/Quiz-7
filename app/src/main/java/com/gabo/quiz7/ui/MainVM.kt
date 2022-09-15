@@ -25,16 +25,21 @@ class MainVM @Inject constructor(private val getCoursesUseCase: GetCoursesUseCas
     }
 
     private fun getCourses() {
+        resetViewState()
         viewModelScope.launch {
             val courses = getCoursesUseCase(Unit)
-            getData(courses) {
-                _state.value = _state.value.copy(
-                    activeCourses = _defaultState.value.data?.activeCourses?.map { it.toModel() }
-                        ?: emptyList(),
-                    newCourses = _defaultState.value.data?.newCourses?.map { it.toModel() }
-                        ?: emptyList()
-                )
-            }
+            getData(
+                courses,
+                success = {
+                    _state.value = _state.value.copy(
+                        activeCourses = _defaultState.value.data?.activeCourses?.map { it.toModel() }
+                            ?: emptyList(),
+                        newCourses = _defaultState.value.data?.newCourses?.map { it.toModel() }
+                            ?: emptyList()
+                    )
+                },
+                error = null
+            )
         }
     }
 
@@ -42,4 +47,8 @@ class MainVM @Inject constructor(private val getCoursesUseCase: GetCoursesUseCas
         val activeCourses: List<ActiveCoursesModel> = emptyList(),
         val newCourses: List<NewCoursesModel> = emptyList()
     )
+
+    override fun resetViewState() {
+        _state.value = ViewState()
+    }
 }
